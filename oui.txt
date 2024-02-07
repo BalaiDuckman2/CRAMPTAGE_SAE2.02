@@ -1,0 +1,12 @@
+dictionnaire contenant pour chaque indice le numéro de la case ex [0][2] = A3
+
+parcours du dictionnaire en backtracking en mettant chaque valeur dans un tableau (.pop si sa marche pas et .append si oui tu sais)
+
+fin : affichage d'un grille avec numéro de parcours ?
+
+    1   2   3
+A   1   6   3
+
+B   4       8
+
+C   7   2   5
