@@ -8,15 +8,23 @@ def graphe(n) :
         j = k%n # colonne de la case k
 
         E[k] = [] # E[k]  : liste des voisins de la case k
-        if  0 <= i-2 < n and  0 <= j-1 < n : E[k].append((i-2)*n+(j-1))
-        if  0 <= i-2 < n and  0 <= j+1 < n : E[k].append((i-2)*n+(j+1))
-        if  0 <= i+2 < n and  0 <= j-1 < n : E[k].append((i+2)*n+(j-1))
-        if  0 <= i+2 < n and  0 <= j+1 < n : E[k].append((i+2)*n+(j+1))
+        if  0 <= i-2 < n and  0 <= j-1 < n :
+            E[k].append((i-2)*n+(j-1))
+        if  0 <= i-2 < n and  0 <= j+1 < n :
+            E[k].append((i-2)*n+(j+1))
+        if  0 <= i+2 < n and  0 <= j-1 < n :
+            E[k].append((i+2)*n+(j-1))
+        if  0 <= i+2 < n and  0 <= j+1 < n :
+            E[k].append((i+2)*n+(j+1))
 
-        if  0 <= i-1 < n and  0 <= j-2 < n : E[k].append((i-1)*n+(j-2))
-        if  0 <= i-1 < n and  0 <= j+2 < n : E[k].append((i-1)*n+(j+2))
-        if  0 <= i+1 < n and  0 <= j-2 < n : E[k].append((i+1)*n+(j-2))
-        if  0 <= i+1 < n and  0 <= j+2 < n : E[k].append((i+1)*n+(j+2))
+        if  0 <= i-1 < n and  0 <= j-2 < n :
+            E[k].append((i-1)*n+(j-2))
+        if  0 <= i-1 < n and  0 <= j+2 < n :
+            E[k].append((i-1)*n+(j+2))
+        if  0 <= i+1 < n and  0 <= j-2 < n :
+            E[k].append((i+1)*n+(j-2))
+        if  0 <= i+1 < n and  0 <= j+2 < n :
+            E[k].append((i+1)*n+(j+2))
     return E
 
 
@@ -69,7 +77,5 @@ def affichage(n) :
 		for c in ligne :
 			print(c, end=" ")
 		print()
-
-
 
 affichage(6)
