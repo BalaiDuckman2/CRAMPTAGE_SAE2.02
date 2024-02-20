@@ -52,7 +52,6 @@ def cavalierHamilton(n) :
             if not gagne :
                 chemin.pop() #  case est supprimée de chemin si elle a mené à une impasse
 
-
         return gagne
 
     # départ d'une case prise au hasard :
