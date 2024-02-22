@@ -1,4 +1,5 @@
 import random
+import pygame
 
 
 def graphe(n):
@@ -81,20 +82,32 @@ def cavalier(n):
     return chemin
 
 def affichage(n) :
-	""" affichage simple de l'échiquier avec indication de l'ordre de parcours des cellules réalisé."""
-
 	t = [[0 for j in range(n) ] for k in range(n)]
 	chemin = cavalier(n)
-
 	rg = 1
 	for x in chemin :
 		if rg > 9 : t[x//n][x%n] = str(rg)
 		else : t[x//n][x%n] = '0' + str(rg)
 		rg += 1
-
 	for ligne in t :
 		for c in ligne :
 			print(c, end=" ")
 		print()
 
-affichage(9)
+###PYGAME TEST
+
+pygame.init()
+screen = pygame.display.set_mode((600, 480))
+
+fond = pygame.image.load("background.jpg").convert()
+screen.blit(fond, (0,0))
+cava = pygame.image.load("cavalier.png").convert()
+screen.blit(cava, (20, 20))
+
+running = True
+while running: 
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    pygame.display.update()
+pygame.quit()
