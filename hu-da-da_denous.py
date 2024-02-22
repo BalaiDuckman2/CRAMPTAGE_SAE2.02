@@ -87,3 +87,9 @@ while running:
             running = False
     pygame.display.update()
 pygame.quit()
+
+### Trouver fond echiquier
+### Trouver les bonnes coordonnées pour chaque case
+### Faire bouger le cava avec le parcours du tableau
+### Faire en sorte que chaque case visiter est une croix sur elle
+### Ajouter une ligne entre chaque point pour voir plus facilement le trajet
