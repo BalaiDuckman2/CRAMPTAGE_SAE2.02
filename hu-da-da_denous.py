@@ -4,30 +4,6 @@ import pygame
 
 def graphe(n):
     graph = dict()
-    """for i in range(n*n):
-        lig = i//n
-        col = i%n
-        graph[i] = []
-        #Coup à gauche
-        if col - 2 >= 0 and lig - 1 >=0:
-            graph[i].append(i-2-n)
-        if col - 2 >=0 and lig + 1 <= n:
-            graph[i].append(i-2+n)
-        #Coup en haut
-        if lig - 2 >= 0 and col - 1 <= 0:
-            graph[i].append(i-(2*n)-1)
-        if lig - 2 >= 0 and col + 1 <= n:
-            graph[i].append(i-(2*n)+1)
-        #Coup en bas
-        if lig + 2 <= n and col - 1 >= 0:
-            graph[i].append(i+(2*n)-1)
-        if lig + 2 <= n and col + 1 <= n:
-            graph[i].append(i+(2*n)+1)
-        #Coup à droite
-        if col + 2 <=n and lig - 1 >= 0:
-            graph[i].append(i+2-n)
-        if col + 2 <= n and lig + 1 <= n:
-            graph[i].append(i+2+n)"""
 
     for k in range(n*n) :
         i = k//n # ligne de la case k
