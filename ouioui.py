@@ -1,4 +1,5 @@
 import random
+import pygame
 
 def graphe(n):
     graph = dict()
