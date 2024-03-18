@@ -57,19 +57,32 @@ def cavalier(n):
     parcoursCavalier(case1)
     return chemin
 
-def affichage(n) :
-	t = [[0 for j in range(n) ] for k in range(n)]
-	chemin = cavalier(n)
-	rg = 1
-	for x in chemin :
-		if rg > 9 : t[x//n][x%n] = str(rg)
-		else : t[x//n][x%n] = '0' + str(rg)
-		rg += 1
-	for ligne in t :
-		for c in ligne :
-			print(c, end=" ")
-		print()
+
+def afficher_chemin(chemin, n):
+    pygame.init()
+    ecran = pygame.display.set_mode((n*50, n*50))
+    pygame.display.set_caption("Chemin du cavalier")
+
+    num = 1
+    for case in chemin:
+        i, j = case//n, case%n
+        pygame.draw.rect(ecran, (255, 255, 255), (j*50, i*50, 50, 50), 1)
+        font = pygame.font.SysFont('arial', 20)
+        text = font.render(str(num), True, (255, 255, 255))
+        ecran.blit(text, (j*50,i*50,50,50))
+        pygame.display.flip()
+        pygame.time.delay(100)
+        num += 1
+
+    running = True
+    while running: 
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        pygame.display.update()
+    pygame.quit()
 
 
-n = 8
-affichage(n)
+n = 5
+chemin = cavalier(n)
+afficher_chemin(chemin, n)
