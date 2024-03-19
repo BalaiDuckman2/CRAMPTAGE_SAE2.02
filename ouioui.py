@@ -53,10 +53,6 @@ def cavalier(n):
 
 def affichage(n):
     pygame.init()
-    if n%2==0:
-        nbCase = n//2
-    else:
-        nbCase = n//2+1;
     WIDTH, HEIGHT = 600, 600
     taille_case = 100
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -64,14 +60,23 @@ def affichage(n):
     BLACK = (118, 118, 118)
     cord_x = []
     cord_y = []
+    for i in range(0, n):
+        cord_y.append(100*i+30)
+        cord_x.append(100*i+30)
     def draw_grid():
-        for i in range(0, n):
-            if i%2 == 0:
-                for j in range(0,nbCase):
-                    pygame.draw.rect(screen, BLACK, [200*j+30, 100*i+30, taille_case, taille_case])
+        for i in range(n):
+            if i%2==0:
+                for j in range(n):
+                    if j%2==0:
+                        pygame.draw.rect(screen, WHITE, [cord_x[j], cord_y[i], taille_case, taille_case])
+                    else:
+                        pygame.draw.rect(screen, BLACK, [cord_x[j], cord_y[i], taille_case, taille_case])
             else:
-                for j in range(0, nbCase-1):
-                    pygame.draw.rect(screen, BLACK, [200*j+130, 100*i+30, taille_case, taille_case])
+                for j in range(n):
+                    if j%2==0:
+                        pygame.draw.rect(screen, BLACK, [cord_x[j], cord_y[i], taille_case, taille_case])
+                    else:
+                        pygame.draw.rect(screen, WHITE, [cord_x[j], cord_y[i], taille_case, taille_case])
         pygame.draw.rect(screen, (0,0,0), [30,30, taille_case*n, taille_case*n], 1)
     running = True
     while running:
