@@ -62,6 +62,8 @@ def affichage(n):
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     WHITE = (255, 255, 255)
     BLACK = (118, 118, 118)
+    cord_x = []
+    cord_y = []
     def draw_grid():
         for i in range(0, n):
             if i%2 == 0:
@@ -71,7 +73,6 @@ def affichage(n):
                 for j in range(0, nbCase-1):
                     pygame.draw.rect(screen, BLACK, [200*j+130, 100*i+30, taille_case, taille_case])
         pygame.draw.rect(screen, (0,0,0), [30,30, taille_case*n, taille_case*n], 1)
-
     running = True
     while running:
         for event in pygame.event.get():
