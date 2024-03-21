@@ -53,7 +53,7 @@ def cavalier(n):
 
 def affichage(n):
     pygame.init()
-    WIDTH, HEIGHT = 600, 600
+    WIDTH, HEIGHT = 800, 600
     taille_case = 100
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     WHITE = (255, 255, 255)
