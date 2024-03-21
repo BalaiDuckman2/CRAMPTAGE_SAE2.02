@@ -29,7 +29,7 @@ def graphe(n):
     return graph
 
 
-def cavalier(n):
+def cavalier(n, pos):
     g = graphe(n)
     chemins = []
     def parcoursCavalier(case, chemin):
@@ -83,9 +83,22 @@ def affichage(n):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                for x in cord_x:
+                    for y in cord_y:
+                        if pygame.mouse.get_pos() < x + taille_case and pygame.get_pos() > x:
+                            if pygame.mouse.get_pos() < y + taille_case and pygame.get_pos() > y:
+                                
         screen.fill((255, 255, 255))
         draw_grid()
         pygame.display.flip()
+        for x in cord_x:
+            for y in cord_y:
+                if pygame.mouse.get_pos() < (x+x,y+y) and pygame.mouse.get_pos() > (x,y):
+                    if pygame.mouse.get_pressed() == True:
+                        chemin = cavalier(n)
+                        print(chemin[1])
+                        
 
 n = 5
 affichage(n)
