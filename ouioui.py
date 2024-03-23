@@ -1,5 +1,6 @@
 import random
 import pygame
+from pygame.locals import *
 
 def graphe(n):
     graph = dict()
@@ -29,7 +30,7 @@ def graphe(n):
     return graph
 
 
-def cavalier(n, pos):
+def cavalier(n):
     g = graphe(n)
     chemins = []
     def parcoursCavalier(case, chemin):
@@ -48,11 +49,45 @@ def cavalier(n, pos):
                     chemin.pop()
     case1 = random.randint(0,n*n-1)
     parcoursCavalier(case1, [])
-    return chemins
+    return chemins, case1
 
 
-def affichage(n):
+def affichage(n, chemin, c):
     pygame.init()
+    ecran = pygame.display.set_mode((n*150, n*200))
+    pygame.display.set_caption("Chemin du cavalier")
+
+    if len(chemin) > 0:
+        num = 1
+        parcours = chemin[random.randint(0, len(chemin))-1]
+        for case in parcours:
+            i, j = case//n, case%n
+            pygame.draw.rect(ecran, (255, 255, 255), (j*150, i*150, 150, 150), 1)
+            font = pygame.font.SysFont('arial', 50)
+            text = font.render(str(num), True, (255, 255, 255))
+            ecran.blit(text, (j*150,i*150,150,150))
+            pygame.display.flip()
+            pygame.time.delay(100)
+            num += 1
+        font = pygame.font.SysFont('arial', 35)
+        text = font.render("Nombre de chemin total pour la case "+ str(c) + " : "+ str(len(chemin)), True, (255, 255, 255))
+        ecran.blit(text, (25, n*170))
+        pygame.display.flip()
+        
+
+    else:
+        font = pygame.font.SysFont('arial', 35)
+        text = font.render("0 chemin possible pour la case :" + str(c), True, (255, 255, 255))
+        ecran.blit(text, (25, 80))
+        pygame.display.flip()
+    running = True
+    while running: 
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        pygame.display.update()
+    pygame.quit()
+    """pygame.init()
     WIDTH, HEIGHT = 800, 600
     taille_case = 100
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -86,19 +121,13 @@ def affichage(n):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 for x in cord_x:
                     for y in cord_y:
-                        if pygame.mouse.get_pos() < x + taille_case and pygame.get_pos() > x:
-                            if pygame.mouse.get_pos() < y + taille_case and pygame.get_pos() > y:
-                                
+                        if pygame.mouse.get_pos() < (x + taille_case, y + taille_case) and pygame.get_pos()[0] > (x, y):
+                            pygame.draw.rect(screen, BLACK, [cord_x[x], cord_y[y], taille_case, taille_case], 5)
         screen.fill((255, 255, 255))
         draw_grid()
-        pygame.display.flip()
-        for x in cord_x:
-            for y in cord_y:
-                if pygame.mouse.get_pos() < (x+x,y+y) and pygame.mouse.get_pos() > (x,y):
-                    if pygame.mouse.get_pressed() == True:
-                        chemin = cavalier(n)
-                        print(chemin[1])
+        pygame.display.flip()"""
                         
 
 n = 5
-affichage(n)
+chemin, case = cavalier(n)
+affichage(n, chemin, case)

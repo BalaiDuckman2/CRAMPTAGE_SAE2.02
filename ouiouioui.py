@@ -51,7 +51,8 @@ def cavalier(n):
             for v in voisins:
                 if parcoursCavalier(v):
                     return chemin
-            chemin.pop()
+                else:
+                    chemin.pop()
     
     case1 = random.randint(0, n*n-1)
     parcoursCavalier(case1)
@@ -59,12 +60,13 @@ def cavalier(n):
 
 
 def afficher_chemin(chemin, n):
+    parcours = chemin[random.randint(0, len(chemin))]
     pygame.init()
     ecran = pygame.display.set_mode((n*50, n*50))
     pygame.display.set_caption("Chemin du cavalier")
 
     num = 1
-    for case in chemin:
+    for case in parcours:
         i, j = case//n, case%n
         pygame.draw.rect(ecran, (255, 255, 255), (j*50, i*50, 50, 50), 1)
         font = pygame.font.SysFont('arial', 20)
