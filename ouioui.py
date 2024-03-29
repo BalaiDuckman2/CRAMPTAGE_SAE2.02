@@ -70,14 +70,14 @@ def affichage(n, chemin, c):
             pygame.time.delay(100)
             num += 1
         font = pygame.font.SysFont('arial', 35)
-        text = font.render("Nombre de chemin total pour la case "+ str(c) + " : "+ str(len(chemin)), True, (255, 255, 255))
+        text = font.render("Nombre de chemin total pour la case "+ str(c + 1) + " : "+ str(len(chemin)), True, (255, 255, 255))
         ecran.blit(text, (25, n*170))
         pygame.display.flip()
         
 
     else:
         font = pygame.font.SysFont('arial', 35)
-        text = font.render("0 chemin possible pour la case :" + str(c), True, (255, 255, 255))
+        text = font.render("0 chemin possible pour la case :" + str(c + 1), True, (255, 255, 255))
         ecran.blit(text, (25, 80))
         pygame.display.flip()
     running = True
@@ -87,45 +87,6 @@ def affichage(n, chemin, c):
                 running = False
         pygame.display.update()
     pygame.quit()
-    """pygame.init()
-    WIDTH, HEIGHT = 800, 600
-    taille_case = 100
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    WHITE = (255, 255, 255)
-    BLACK = (118, 118, 118)
-    cord_x = []
-    cord_y = []
-    for i in range(0, n):
-        cord_y.append(100*i+30)
-        cord_x.append(100*i+30)
-    def draw_grid():
-        for i in range(n):
-            if i%2==0:
-                for j in range(n):
-                    if j%2==0:
-                        pygame.draw.rect(screen, WHITE, [cord_x[j], cord_y[i], taille_case, taille_case])
-                    else:
-                        pygame.draw.rect(screen, BLACK, [cord_x[j], cord_y[i], taille_case, taille_case])
-            else:
-                for j in range(n):
-                    if j%2==0:
-                        pygame.draw.rect(screen, BLACK, [cord_x[j], cord_y[i], taille_case, taille_case])
-                    else:
-                        pygame.draw.rect(screen, WHITE, [cord_x[j], cord_y[i], taille_case, taille_case])
-        pygame.draw.rect(screen, (0,0,0), [30,30, taille_case*n, taille_case*n], 1)
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                for x in cord_x:
-                    for y in cord_y:
-                        if pygame.mouse.get_pos() < (x + taille_case, y + taille_case) and pygame.get_pos()[0] > (x, y):
-                            pygame.draw.rect(screen, BLACK, [cord_x[x], cord_y[y], taille_case, taille_case], 5)
-        screen.fill((255, 255, 255))
-        draw_grid()
-        pygame.display.flip()"""
                         
 
 n = 5
