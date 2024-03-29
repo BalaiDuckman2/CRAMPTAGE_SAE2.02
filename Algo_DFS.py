@@ -10,6 +10,7 @@ def graphe(n):
 
         graph[k] = []
 
+        #Met dans le graphe toutes les cases possible pour la case k
         if  0 <= i-2 < n and  0 <= j-1 < n :
             graph[k].append((i-2)*n+(j-1))
         if  0 <= i-2 < n and  0 <= j+1 < n :
@@ -33,6 +34,9 @@ def graphe(n):
 def cavalier(n):
     g = graphe(n)
     chemins = []
+    #Fonction DFS parcours du graphe en profondeur, parcours tous les chemins possible, si la longueur du chemin final
+    #est égale à n*n (nombre de case de l'échiquier) le chemin est mis dans une liste qui est retourner a la fin de la boucle
+    #Elle retourne également la case de commencement qui est choisis aléatoirement ici
     def parcoursCavalier(case, chemin):
         chemin.append(case)
         if len(chemin)==n*n:
@@ -51,7 +55,8 @@ def cavalier(n):
     parcoursCavalier(case1, [])
     return chemins, case1
 
-
+#Affichage du parcours du cavalier avec le module pygame, affiche les cases une par un numéro correspondant a l'ordre de passage d'une case
+# et affiche le nombre de chemin total pour la case
 def affichage(n, chemin, c):
     pygame.init()
     ecran = pygame.display.set_mode((n*150, n*200))
